@@ -1,4 +1,4 @@
-Caracol
+Agenda 1.0
 =======
 
-Mini Framework para PHP
+Agenda basada en python Django
