@@ -21,8 +21,8 @@ def LogIn(request):
 		return HttpResponseRedirect("/huevos/")
 	else:
 		if request.method == 'POST':
-			username = request.POST.get('username_login','')
-			password = request.POST.get('password_login','')
+			username = request.POST.get('username_login')
+			password = request.POST.get('password_login')
 
 			if username == '' or password =='':
 				return HttpResponseRedirect("/error/")
@@ -42,14 +42,14 @@ def Register(request):
 		return HttpResponseRedirect("/huevos/")
 	else:
 		if request.method == 'POST':
-			username=request.POST.get('username','')
-			email=request.POST.get('email','')
-			password=request.POST.get('password','')
-			password2=request.POST.get('password2','')
+			username=request.POST.get('username')
+			email=request.POST.get('email')
+			password=request.POST.get('password')
+			password2=request.POST.get('password2')
 
-			if username == '' or email == '' or password == '' or password2 == '':
-				errors = 'Debes llenar completa la informacion de registro '
-				errors = errors + request.POST['username'] + email + password + password
+			if username == None or email == None or password == None or password2 == None:
+				errors = 'Debes llenar completa la informacion de registro'
+				
 				return render(request,"organizarte_home.html",{
 					'errors':errors,
 					})
@@ -60,12 +60,22 @@ def Register(request):
 					'errors':errors,
 					})
 
-			new_user = User.objetcts.create_user(username=username,
+			user_duplicate = User.objects.get(username=username)
+
+			if user_duplicate:
+				errors = 'El usuario especificado ya ha sido registrado'
+				return render(request,"organizarte_home.html",{
+					'errors':errors,
+					})
+
+			new_user = User.objects.create_user(username=username,
 				email=email,
 				password=password)
 
 			new_user.is_staff = True
 			new_user.save()
+
+			return HttpResponseRedirect("/huevos/")
 		else:
 			return HttpResponseRedirect("/error/")
 
