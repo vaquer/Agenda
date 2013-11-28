@@ -6,79 +6,11 @@ from django.contrib.auth.models import User
 from models import Event
 from forms import EventForm
 
-def Index(request):
-	return render(request,'organizarte_home.html',{})
-	#return render(request,'pruebaform.html',{})
-
 def Huevos(request):
 	mensaje ="huevos python"
 	return render(request,"index.html",{
 			'mensaje': mensaje
 		})
-
-def LogIn(request):
-	if request.user.is_authenticated():
-		return HttpResponseRedirect("/huevos/")
-	else:
-		if request.method == 'POST':
-			username = request.POST.get('username_login')
-			password = request.POST.get('password_login')
-
-			if username == '' or password =='':
-				return HttpResponseRedirect("/error/")
-
-			user_authenticated = auth.authenticate(username=username,password=password)
-
-			if user_authenticated is not None:
-				auth.login(request,user_authenticated)
-				return HttpResponseRedirect("/huevos/")
-			else:
-				return HttpResponseRedirect("/error/") 
-		else:
-			return HttpResponseRedirect("/error/") 
-
-def Register(request):
-	if request.user.is_authenticated():
-		return HttpResponseRedirect("/huevos/")
-	else:
-		if request.method == 'POST':
-			username=request.POST.get('username')
-			email=request.POST.get('email')
-			password=request.POST.get('password')
-			password2=request.POST.get('password2')
-
-			if username == None or email == None or password == None or password2 == None:
-				errors = 'Debes llenar completa la informacion de registro'
-				
-				return render(request,"organizarte_home.html",{
-					'errors':errors,
-					})
-
-			if password != password2:
-				errors = 'Las contrasenas no coinciden'
-				return render(request,"organizarte_home.html",{
-					'errors':errors,
-					})
-
-			user_duplicate = User.objects.get(username=username)
-
-			if user_duplicate:
-				errors = 'El usuario especificado ya ha sido registrado'
-				return render(request,"organizarte_home.html",{
-					'errors':errors,
-					})
-
-			new_user = User.objects.create_user(username=username,
-				email=email,
-				password=password)
-
-			new_user.is_staff = True
-			new_user.save()
-
-			return HttpResponseRedirect("/huevos/")
-		else:
-			return HttpResponseRedirect("/error/")
-
 
 def Error(request):
 	return render(request, "organizarte_error.html")

@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, include, url
-from Agenda.Evento.views import Index,LogIn,Huevos,Error,Register
+from Agenda.Evento.views import Huevos,Error
+from Agenda.UsersControl.views import Index,LogIn,Register
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()

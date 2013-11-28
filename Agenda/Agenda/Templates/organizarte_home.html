@@ -1,12 +1,14 @@
-<!DOCTYPE>
-<Html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+{% extends 'organizarte_template.html' %}
+	{% block css_files %}
 		<link rel="stylesheet" type="text/css"  href="/static/css/style.css" media = "screen"/>
-		<title> Organizarte | Agenda tu vida </title>
-		<!--[if IE]>
-			<style type="text/css" media="all">.borderitem {border-style: solid;}</style>
-		<![endif]-->
+			<!--[if IE]>
+				<style type="text/css" media="all">.borderitem {border-style: solid;}</style>
+			<![endif]-->
+	{% endblock %}
+	{% block title_page %}
+		<title> Organizarte | Tu agenda tu vida </title>
+	{% endblock %}
+	{% block js_files %}
 		<script>
 			function login(){
 				document.form_login.submit()
@@ -16,77 +18,85 @@
 				document.form_registro.submit()
 			}
 		</script>
-	</head>
-	<body>
-		<header>
-			<nav>
-			<div id="Navegacion">
-				<div id = "Logo">ORGANIZARTE</div>
-				<div id = "Login">
-					<div class="form_login">
-						<form action="/login/" method="POST" name="form_login" id="form_login">{% csrf_token %}
-							<div class="InputLogin"><input type="text" class="InputLogin" id="username_login" name="username_login"/></div>
-							<div class="InputLogin"><input type="password"  class="InputLogin" id="password_login" name="password_login"/></div>
-						</form>
+	{% endblock %}
+	{% block nav %}
+		<div id = "Login">
+			<div class="form_login">
+				<form action="/login/" method="POST" name="form_login" id="form_login">{% csrf_token %}
+					<div class="InputLogin">
+						{{ form_login.username_login }}						
 					</div>
-					<div class="btnLogin"><a id="btn_login" href="javascript:login()"/>Inicio</a></div>
-				</div>
+					<div class="InputLogin">
+						{{ form_login.password_login }}						
+					</div>
+				</form>
 			</div>
-			</nav>
-					
-			<div id = "Banner">
-				<hgroup>	
-				<h1>Organizacion 1.0</h1>
-				<h2>Programacion de tus eventos </h2>
+			<div class="btnLogin">
+				<a id="btn_login" href="javascript:login()"/>Inicio</a>
+			</div>
+		</div>
+	{% endblock %}
+	{% block banner %}
+		<hgroup>					
+					<h1>Organizacion 1.0</h1>
+					<h2>Programacion de tus eventos </h2>
 				</hgroup>
-			</div>
-			<div id = "Cuotes">				
-			</div>
-			
-		</header>
-		<section>
-			<arcticle>
-				<div id="Entry">
-					<div id = "Descrip">
-						<h3>Inicia</h3>
-						<p>Comienza a organizar tu tiempo de forma eficiente. Aumenta tu productividad 
-						y empieza a tener tu agenda al dia.</p>
-					</div>
-					
-					<div ="Registro">						
-						<form action="/register/" method="POST" name="form_registro" id="form_registro">{% csrf_token %}
-							<table class="Registro">
-								<tr>
-									<td>Nombre</td><td><div class="InputRegistro">
-									<input type="text" id="username" name="username"/></div></td>
-								</tr>
-								<tr>
-									<td>Correo</td><td><div class="InputRegistro">
-									<input type="text" id="email" name="email"/></div></td>
-								</tr>
-								<tr>
-									<td>Password</td><td><div class="InputRegistro">
-									<input type="password" id="password" name="password"/></div></td>
-								</tr>
-								<tr>
-									<td>Confirmacion</td><td><div class="InputRegistro">
-									<input type="password" id="password2" name="password2"/></div></td>
-								</tr>					
-							</table>							
-						</form>
-						<div id ="divbtnReg" class="button"><a href="javascript:register()">Registrate</a></div>
-					</div>						
-					<div class="errores">
-						{% if errors %}
-							<p> {{ errors }} </p>
-						{% endif %}
-					</div>
-				</div>				
-			</article>			
-		</section>
-		<footer>
+	{% endblock %}
+	{% block arcticle %}
+		<div id = "Descrip">
+			<h3>Inicia</h3>
+			<p>Comienza a organizar tu tiempo de forma eficiente. Aumenta tu productividad 
+			y empieza a tener tu agenda al dia.</p>
+		</div>
+		
+		<div ="Registro">						
+			<form action="/register/" method="POST" name="form_registro" id="form_registro">{% csrf_token %}
+				<table class="Registro">
+					<tr>
+						<td>Nombre</td>
+						<td>
+							<div class="InputRegistro">
+								{{ form_register.username }}
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>Correo</td>
+						<td>
+							<div class="InputRegistro">
+								{{ form_register.email }}
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>Password</td>
+						<td>
+							<div class="InputRegistro">
+								{{ form_register.password }}
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>Confirmacion</td>
+						<td>
+							<div class="InputRegistro">						
+								{{ form_register.password2 }}
+							</div>
+						</td>
+					</tr>					
+				</table>							
+			</form>
+			<div id ="divbtnReg" class="button"><a href="javascript:register()">Registrate</a></div>
+		</div>						
+		<div class="errores">
+			{% if form_register.message.errors %}
+				{% for error in form_register.message.errors %}
+					<p> {{ error|escape }} </p>
+				{% endfor %}
+			{% endif %}
+		</div>
+	{% endblock %}
+	{% block footer %}
 		<div id="foterorg">
 		</div>
-		</footer>
-	</body>
-</Html>
+	{% endblock %}

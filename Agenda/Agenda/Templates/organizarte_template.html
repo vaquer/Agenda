@@ -1,0 +1,38 @@
+<!DOCTYPE>
+<Html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />		
+		{% block css_files %} {% endblock %}		
+
+		{% block title_page %} {% endblock %}		
+
+		{% block js_files %} {% endblock %}		
+	</head>
+	<body>
+		<header>
+			<nav>
+			<div id="Navegacion">				
+				<div id = "Logo">ORGANIZARTE</div>
+				{% block nav %} {% endblock %}				
+				</div>
+			</nav>
+					
+			<div id = "Banner">
+				{% block banner %} {% endblock %}				
+			</div>
+			<div id = "Cuotes">				
+			</div>
+			
+		</header>
+		<section>
+			<arcticle>
+				<div id="Entry">
+					{% block arcticle %} {% endblock %}					
+				</div>				
+			</article>			
+		</section>
+		<footer>
+			{% block footer %} {% endblock %}		
+		</footer>
+	</body>
+</Html>

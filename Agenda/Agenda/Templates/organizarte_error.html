@@ -1,44 +1,33 @@
-<!DOCTYPE>
-<Html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<link rel="stylesheet" type="text/css"  href="/static/css/style.css" media = "screen"/>		
-		<title> Aroganizarte Error </title>
+{% extends 'organizarte_template.html'}
+	{% block css_files %}
+		<link rel="stylesheet" type="text/css"  href="/static/css/style.css" media = "screen"/>
 		<!--[if IE]>
 			<style type="text/css" media="all">.borderitem {border-style: solid;}</style>
 		<![endif]-->
-	</head>
-	<body>
-		<header>
-			<nav>
-			<div id="Navegacion">
-			</div>				
-			</nav>
-					
-			<div id = "Banner">
-				<hgroup>	
-				<h1>Organizarte</h1>
-				<h2>Me lleva!</h2>
-				</hgroup>
-			</div>
-			<div id = "Cuotes">
-				
-			</div>			
-		</header>
-		<section>
-			<arcticle>
-				<div id="Entry">					
-					<h2>UPSS!!!</h2>
-					<h3>Disculpa la cagamos en algo, en breve estaremos dandole seguimiento</h3>
-					{% if error %}
-						<p>{{ error }}}</p>
-					{% endif %}
-				</div>
-			</article>			
-		</section>
-		<footer>
-			<div id="foterorg">
-			</div>
-		</footer>
-	</body>
-</Html>
+	{% endblock %}
+	{% block title_page %}
+		<title> Aroganizarte Error </title>
+	{% endblock %}
+	{% block nav %}
+		<div id="Navegacion">
+		</div>				
+	{% endblock %}		
+	{% block banner %}
+		<hgroup>	
+			<h1>Organizarte</h1>
+			<h2>Me lleva!</h2>
+		</hgroup>
+	{% endblock %}
+	{% block arcticle %}
+		<div id="Entry">					
+			<h2>UPSS!!!</h2>
+			<h3>Disculpa la cagamos en algo, en breve estaremos dandole seguimiento</h3>
+			{% if error %}
+				<p>{{ error|scape }}}</p>
+			{% endif %}
+		</div>
+	{% endblock %}
+	{% block footer %}
+		<div id="foterorg">
+		</div>	
+	{% endblock %}
