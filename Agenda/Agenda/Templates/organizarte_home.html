@@ -9,7 +9,7 @@
 		<title> Organizarte | Tu agenda tu vida </title>
 	{% endblock %}
 	{% block js_files %}
-		<script>
+		<script type="text/javascript">
 			function login(){
 				document.form_login.submit()
 			}
@@ -22,13 +22,14 @@
 	{% block nav %}
 		<div id = "Login">
 			<div class="form_login">
-				<form action="/login/" method="POST" name="form_login" id="form_login">{% csrf_token %}
+				<form action="." method="POST" name="form_login" id="form_login">{% csrf_token %}
 					<div class="InputLogin">
 						{{ form_login.username_login }}						
 					</div>
 					<div class="InputLogin">
 						{{ form_login.password_login }}						
 					</div>
+						{{ form_login.identificadorform }}
 				</form>
 			</div>
 			<div class="btnLogin">
@@ -38,9 +39,9 @@
 	{% endblock %}
 	{% block banner %}
 		<hgroup>					
-					<h1>Organizacion 1.0</h1>
-					<h2>Programacion de tus eventos </h2>
-				</hgroup>
+			<h1>Organizacion 1.0</h1>
+			<h2>Programacion de tus eventos </h2>
+		</hgroup>
 	{% endblock %}
 	{% block arcticle %}
 		<div id = "Descrip">
@@ -50,7 +51,7 @@
 		</div>
 		
 		<div ="Registro">						
-			<form action="/register/" method="POST" name="form_registro" id="form_registro">{% csrf_token %}
+			<form action="." method="POST" name="form_registro" id="form_registro">{% csrf_token %}
 				<table class="Registro">
 					<tr>
 						<td>Nombre</td>
@@ -58,14 +59,20 @@
 							<div class="InputRegistro">
 								{{ form_register.username }}
 							</div>
+							{% for error in form_register.username.errors %}
+								<div class="errores"><p> {{ error|escape }} </p></div>
+							{% endfor %}
 						</td>
 					</tr>
 					<tr>
 						<td>Correo</td>
 						<td>
 							<div class="InputRegistro">
-								{{ form_register.email }}
+								{{ form_register.email }}								
 							</div>
+							{% for error in form_register.email.errors %}
+								<div class="errores"><p> {{ error|escape }} </p></div>
+							{% endfor %}	
 						</td>
 					</tr>
 					<tr>
@@ -74,6 +81,9 @@
 							<div class="InputRegistro">
 								{{ form_register.password }}
 							</div>
+							{% for error in form_register.password.errors %}
+								<div class="errores"><p> {{ error|escape }} </p></div>
+							{% endfor %}
 						</td>
 					</tr>
 					<tr>
@@ -82,18 +92,15 @@
 							<div class="InputRegistro">						
 								{{ form_register.password2 }}
 							</div>
+							{% for error in form_register.password2.errors %}
+								<div class="errores"><p> {{ error|escape }} </p></div>
+							{% endfor %}
 						</td>
 					</tr>					
 				</table>							
+				{{ form_register.identificadorform }}
 			</form>
 			<div id ="divbtnReg" class="button"><a href="javascript:register()">Registrate</a></div>
-		</div>						
-		<div class="errores">
-			{% if form_register.message.errors %}
-				{% for error in form_register.message.errors %}
-					<p> {{ error|escape }} </p>
-				{% endfor %}
-			{% endif %}
 		</div>
 	{% endblock %}
 	{% block footer %}

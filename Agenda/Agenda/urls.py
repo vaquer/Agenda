@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 from Agenda.Evento.views import Huevos,Error
-from Agenda.UsersControl.views import Index,LogIn,Register
+from Agenda.UsersControl.views import Index
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
@@ -15,9 +15,7 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
-    url(r'^$',Index),
-    url(r'^login/$',LogIn),
+    url(r'^$',Index),    
     url(r'^error/$',Error),
-    url(r'^huevos/$',Huevos),    
-    url(r'^register/$',Register)
+    url(r'^huevos/$',Huevos),        
 )

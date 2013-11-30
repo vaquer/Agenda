@@ -1,0 +1,268 @@
+@charset "utf-8";
+@import url(http://fonts.googleapis.com/css?family=Rosario:400,400italic,700,700italic);
+@import url(http://fonts.googleapis.com/css?family=Rosario:400italic,700|Roboto:400,100italic);
+
+body{margin:0;padding:0;color:#8A8E27; text-weight:normal;font-family:Arial;color: #8A8E97;background-color:#eee;}
+
+#Navegacion
+{
+	height:40px;
+	background-color: #000;	
+	margin:0;
+	width:100%;
+	padding-bottom:5px;
+	padding-top:10px;
+	border-bottom:5px solid #5BB62E;
+}
+#Logo
+{
+	float:left;
+	font-family:'Roboto', sans-serif;
+	font-style:bold;
+	font-size:25px;
+	color: #eee;
+	margin-left:12%;	
+	width:35%;
+	margin-bottom:0px;
+}
+
+
+#Login
+{
+	float:left;
+	margin-left:5%;
+	font-family: 'Rosario', sans-serif;
+	font-style:normal;
+	font-size:15px;
+	margin-bottom:0px;
+	margin-top:5px;
+}
+
+div.InputLogin
+{
+	float:left;
+	width:158px;
+	height:19px;
+	border-bottom:1px solid #CCCCCC;
+	background-color:#eee;
+	background:url("../img/inputLogin.png") repeat-x;
+	padding:3px;
+	margin-left:5px;
+	margin-bottom:0px;
+	border-radius:5px;
+}
+
+div.InputLogin:focus
+{
+	border:2px solid #5BB62E;
+}
+
+input.InputLogin
+{
+	width:150px;
+	height:18px;
+	margin-left:3px;	
+	border:none;
+	font-family:'Roboto', sans-serif;
+	font-size:11px;
+	font-style:bold;
+	color:#989898;	
+	background:transparent;	
+}
+
+div.form_login
+{
+	float:left;
+}
+
+#form_login
+{
+	width:350px;		
+	display:block;
+	float:left;
+}
+
+input.InputLogin:focus {outline:none;}
+
+.btnLogin
+{
+	width:67px;
+	height:23px;
+	float:left;
+	margin-top:2px;
+	margin-left:10px;
+	background:url("../img/btnLogin.png") repeat-x;
+	border-radius:8px;		
+	padding-left:23px;
+}
+
+.btnLogin a
+{
+	text-decoration:none;
+	
+	font-family:'Roboto', sans-serif;
+	font-size:15px;
+	font-style:bold;
+	color:#eee;	
+	display:block;
+}
+
+#Banner
+{
+	height:200;
+	background-image:url('../img/Baner.png');
+	border-bottom:5px solid #5BB62E;
+	padding:0;
+	margin:0;
+}
+
+#Banner h1
+{
+	font-family: 'Rosario', sans-serif;
+	font-style:normal;
+	font-size:70px;
+	margin-top:0;
+	margin-bottom:0;
+	margin-left:18%;
+	padding:0;
+	padding-top:80px; 
+	color:#eee; 
+}
+
+#Banner h2
+{
+	font-family:'Roboto', sans-serif;
+	font-style:italic;
+	font-size:25px;
+	margin-top:0;
+	margin-left:32%;
+	color: #eee;
+}
+
+#Entry
+{
+	font-family: 'Rosario', sans-serif;
+	font-style:normal;
+	font-size:15.5px;
+	margin-top:0;
+	margin-bottom:0;	
+	padding:0;	
+	color:#000; 
+	width:100%;
+	height:409px;
+	border-bottom:5px solid #5BB62E;
+}
+
+#Descrip
+{	
+	float:left;
+	font-stretch:justify;
+	width:40%;
+	margin-left:12%;	
+}
+
+#Descrip p{
+	margin:0;
+}
+
+#Registro
+{
+	float:left;	
+	margin-left:10px;
+	width:30%;
+}
+#Registro h3
+{
+	margin-top:130px;
+	padding:0;
+}
+.Registro
+{
+	display:block;
+	padding-top:40px;
+	margin-left:10px;
+	width:
+	font-family: 'Rosario', sans-serif;
+	font-style:normal;
+	font-size:20px;
+	color:#000;
+}
+
+div.errores
+{
+	display:block;
+	font-size:.7em;
+	color:red;
+	margin-top: 5px;
+}
+
+.InputRegistro
+{	
+	float:left;
+	width:290px;
+	height:40px;
+	border:1px solid #CCCCCC;
+	background-color:#eee;
+	background:url("../img/inputRegistro.png") repeat-x;
+	padding:3px;
+	margin-left:10px;		
+	margin-bottom:10px;
+	border-radius:5px;
+}
+
+.InputRegistro:focus
+{
+	border:2px solid #5BB62E;
+}
+
+.InputRegistro input
+{
+	width:270px;
+	height:35px;
+	margin-left:3px;	
+	border:none;
+	font-family:'Roboto', sans-serif;
+	font-size:22px;
+	font-style:bold;
+	color:#989898;	
+	background:transparent;
+	
+}
+
+.InputRegistro input:focus {outline:none;}
+
+.button
+{
+	width:120px;
+	height:33px;
+	float:left;
+	margin-top:5px;
+	margin-left:10px;
+	background:url("../img/btnExterior.png") repeat-x;
+	border-radius:8px;		
+	padding-left:33px;
+	padding-top:12px;
+}
+
+.button a
+{
+	text-decoration:none;	
+	font-family:'Rosario', sans-serif;	
+	font-style:normal;
+	font-size:20px;
+	color:#eee;	
+	display:block;
+}
+#divbtnReg
+{
+	margin-top:0;
+	margin-left:76%;
+}
+
+#foterorg
+{
+	height:60px;
+	background-color: #000;	
+	margin:0;
+	width:100%;
+}
